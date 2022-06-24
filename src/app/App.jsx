@@ -41,22 +41,17 @@ function App() {
     }
     switch (weather?.weather) {
       case "sunny":
-        return <Sunny />;
+        return <Sunny country={weather.country} />;
       case "cloudy":
-        return <Cloudy />;
+        return <Cloudy country={weather.country} />;
       case "rainy":
-        return <Rainy />;
+        return <Rainy country={weather.country} />;
       default:
         return <LoadingPage />;
     }
   };
 
-  return (
-    <Suspense fallback={<LoadingPage />}>
-      <ErrorPage />
-      {/* {renderWeather()} */}
-    </Suspense>
-  );
+  return <Suspense fallback={<LoadingPage />}>{renderWeather()}</Suspense>;
 }
 
 export default App;
